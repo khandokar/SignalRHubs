@@ -1,7 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using SignalRTutorial.Models;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddControllers();
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<SignalRContext>(opt =>
+    opt.UseInMemoryDatabase("SignalRDB"));
 
 var app = builder.Build();
 
