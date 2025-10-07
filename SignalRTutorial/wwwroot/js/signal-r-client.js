@@ -6,7 +6,7 @@
  * or disable the default devtool with "devtool: false".
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
-var MYAPP;
+var SignalR;
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
@@ -17,7 +17,7 @@ var MYAPP;
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   funcs: () => (/* binding */ funcs)\n/* harmony export */ });\nvar funcs;\r\n(function (funcs) {\r\n    function hello() {\r\n        var message = 'Hello world!';\r\n        console.log(message);\r\n    }\r\n    funcs.hello = hello;\r\n})(funcs || (funcs = {}));\r\n\n\n//# sourceURL=webpack://MYAPP/./src/hello.ts?\n}");
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   funcs: () => (/* binding */ funcs)\n/* harmony export */ });\nvar funcs;\r\n(function (funcs) {\r\n    function hello() {\r\n        var message = 'Hello world!';\r\n        console.log(message);\r\n    }\r\n    funcs.hello = hello;\r\n})(funcs || (funcs = {}));\r\n\n\n//# sourceURL=webpack://SignalR/./src/hello.ts?\n}");
 
 /***/ }),
 
@@ -27,7 +27,7 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   funcs: () => (/* reexport safe */ _hello__WEBPACK_IMPORTED_MODULE_0__.funcs)\n/* harmony export */ });\n/* harmony import */ var _hello__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./hello */ \"./src/hello.ts\");\n\r\n\n\n//# sourceURL=webpack://MYAPP/./src/index.ts?\n}");
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   funcs: () => (/* reexport safe */ _hello__WEBPACK_IMPORTED_MODULE_0__.funcs)\n/* harmony export */ });\n/* harmony import */ var _hello__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./hello */ \"./src/hello.ts\");\n\r\n\n\n//# sourceURL=webpack://SignalR/./src/index.ts?\n}");
 
 /***/ })
 
@@ -92,7 +92,7 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
 /******/ 	var __webpack_exports__ = __webpack_require__("./src/index.ts");
-/******/ 	MYAPP = __webpack_exports__;
+/******/ 	SignalR = __webpack_exports__;
 /******/ 	
 /******/ })()
 ;

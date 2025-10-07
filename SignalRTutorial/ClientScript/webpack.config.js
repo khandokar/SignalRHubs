@@ -16,10 +16,10 @@ module.exports = {
   },
   output: {
     library: {
-      name: 'MYAPP',
+      name: 'SignalR',
       type: 'var'
     },
-    filename: 'app-client.js',
+    filename: 'signal-r-client.js',
     path: path.resolve(__dirname, '../wwwroot/js'),
   }
 };
