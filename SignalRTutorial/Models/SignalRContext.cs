@@ -1,10 +1,11 @@
 using System;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace SignalRTutorial.Models;
 
 
-public class SignalRContext : DbContext
+public class SignalRContext : IdentityDbContext
 {
     public SignalRContext(DbContextOptions<SignalRContext> options)
         : base(options)

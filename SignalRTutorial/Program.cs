@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SignalRTutorial.Models;
+using Microsoft.AspNetCore.Identity;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,11 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<SignalRContext>(opt =>
     opt.UseInMemoryDatabase("SignalRDB"));
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+.AddEntityFrameworkStores<SignalRContext>()
+.AddDefaultTokenProviders()
+.AddDefaultUI();
 
 var app = builder.Build();
 
@@ -24,6 +30,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapStaticAssets();
@@ -33,5 +40,6 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
+app.MapRazorPages();
 
 app.Run();
