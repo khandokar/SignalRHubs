@@ -4,18 +4,20 @@ using Microsoft.AspNetCore.Identity;
 
 
 var builder = WebApplication.CreateBuilder(args);
+//var connectionString = builder.Configuration.GetConnectionString("SignalRContextConnection") ?? throw new InvalidOperationException("Connection string 'SignalRContextConnection' not found.");;
 
-// Add services to the container.
-builder.Services.AddControllers();
+// Add InMemory DB instead of SQL Server
+builder.Services.AddDbContext<SignalRContext>(options =>
+    options.UseInMemoryDatabase("InMemoryIdentityDb"));
+
+// Add Identity
+builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+{
+    options.SignIn.RequireConfirmedAccount = false;
+})
+.AddEntityFrameworkStores<SignalRContext>();
+
 builder.Services.AddControllersWithViews();
-
-builder.Services.AddDbContext<SignalRContext>(opt =>
-    opt.UseInMemoryDatabase("SignalRDB"));
-
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-.AddEntityFrameworkStores<SignalRContext>()
-.AddDefaultTokenProviders()
-.AddDefaultUI();
 
 var app = builder.Build();
 

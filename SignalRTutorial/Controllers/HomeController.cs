@@ -5,7 +5,7 @@ using SignalRTutorial.Models;
 
 namespace SignalRTutorial.Controllers;
 
-[Authorize]
+
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
