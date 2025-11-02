@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Identity;
 
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddSignalR();
+
 //var connectionString = builder.Configuration.GetConnectionString("SignalRContextConnection") ?? throw new InvalidOperationException("Connection string 'SignalRContextConnection' not found.");;
 
 // Add InMemory DB instead of SQL Server
