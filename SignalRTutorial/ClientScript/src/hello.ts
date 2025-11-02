@@ -1,6 +1,6 @@
 import * as signalR from "@microsoft/signalr";
  const connection = new signalR.HubConnectionBuilder()
-    //.withUrl("/hub")
+    .withUrl("/hub")
     .build();
 
 
@@ -15,7 +15,7 @@ console.log("Reconnected. Connection ID:", connectionId);
 
 });
 
- //connection.start().catch((err) => document.write(err));
+ connection.start().catch((err) => document.write(err));
 
  connection.start()
   .then(() => {
