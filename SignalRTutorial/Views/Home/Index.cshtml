@@ -9,6 +9,13 @@
 
 @section Scripts {
     <script>
-        SignalR.funcs.hello();
+        //SignalR.funcs.hello;
+        console.log(SignalR.funcs.myConnection);
+        SignalR.funcs.myConnection.on("messageReceived", (group) => {
+
+            //const groupq = `<input type="radio" id="group${group.id}" name="group" value="${group.id}"><label for="group${group.id}">${group.name}</label><br>`;
+            //divGroup.innerHTML += groupq;
+
+        });
     </script>
 }

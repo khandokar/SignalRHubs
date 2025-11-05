@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
+using SignalRTutorial.Hubs;
 using SignalRTutorial.Models;
 
 namespace SignalRTutorial.Controllers
@@ -12,16 +14,19 @@ namespace SignalRTutorial.Controllers
     public class GroupController : Controller
     {
         private readonly SignalRContext _context;
+        private readonly IHubContext<ChatHub> _hubContext;
 
-        public GroupController(SignalRContext context)
+        public GroupController(SignalRContext context, IHubContext<ChatHub> hubContext)
         {
             _context = context;
+            _hubContext = hubContext;
         }
 
         // GET: Group
         public async Task<IActionResult> Index()
         {
             return View(await _context.Groups.ToListAsync());
+            
         }
 
         // GET: Group/Details/5
