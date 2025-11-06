@@ -11,9 +11,6 @@ connection.onreconnected(connectionId => {
 connection.start()
 .then(() => {
   console.log("Connected. Connection ID:", connection.connectionId);
+  sessionStorage.setItem("connectionId", connection.connectionId);
 })
 .catch((err) => console.error(err));
-
-export namespace funcs {
-  export const myConnection = connection;
-}

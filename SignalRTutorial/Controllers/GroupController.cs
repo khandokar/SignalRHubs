@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using SignalRTutorial.Hubs;
 using SignalRTutorial.Models;
 
@@ -20,13 +21,14 @@ namespace SignalRTutorial.Controllers
         {
             _context = context;
             _hubContext = hubContext;
+
         }
 
         // GET: Group
         public async Task<IActionResult> Index()
         {
             return View(await _context.Groups.ToListAsync());
-            
+        
         }
 
         // GET: Group/Details/5
