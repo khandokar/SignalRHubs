@@ -1,7 +1,10 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.ts',
+ entry: {
+    index: './src/index.ts',
+    signalR: './src/signalR.ts'
+  },
   module: {
     rules: [
       {
@@ -19,7 +22,7 @@ module.exports = {
       name: 'SignalR',
       type: 'var'
     },
-    filename: 'signal-r-client.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, '../wwwroot/js'),
   }
 };
