@@ -271,23 +271,23 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 
 /***/ }),
 
-/***/ "./src/hello.ts":
-/*!**********************!*\
-  !*** ./src/hello.ts ***!
-  \**********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _microsoft_signalr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @microsoft/signalr */ \"../../node_modules/@microsoft/signalr/dist/esm/HubConnectionBuilder.js\");\n\r\nvar connection = new _microsoft_signalr__WEBPACK_IMPORTED_MODULE_0__.HubConnectionBuilder()\r\n    .withUrl(\"/hub\")\r\n    .build();\r\nconnection.onreconnected(function (connectionId) {\r\n    console.log(\"Reconnected. Connection ID:\", connectionId);\r\n});\r\nconnection.start()\r\n    .then(function () {\r\n    console.log(\"Connected. Connection ID:\", connection.connectionId);\r\n    sessionStorage.setItem(\"connectionId\", connection.connectionId);\r\n})\r\n    .catch(function (err) { return console.error(err); });\r\n\n\n//# sourceURL=webpack://SignalR/./src/hello.ts?\n}");
-
-/***/ }),
-
 /***/ "./src/index.ts":
 /*!**********************!*\
   !*** ./src/index.ts ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _hello__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./hello */ \"./src/hello.ts\");\n\r\n\n\n//# sourceURL=webpack://SignalR/./src/index.ts?\n}");
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _signalR__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./signalR */ \"./src/signalR.ts\");\n\r\n\n\n//# sourceURL=webpack://SignalR/./src/index.ts?\n}");
+
+/***/ }),
+
+/***/ "./src/signalR.ts":
+/*!************************!*\
+  !*** ./src/signalR.ts ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _microsoft_signalr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @microsoft/signalr */ \"../../node_modules/@microsoft/signalr/dist/esm/HubConnectionBuilder.js\");\n\r\n// Only create once per tab session\r\nvar connection = new _microsoft_signalr__WEBPACK_IMPORTED_MODULE_0__.HubConnectionBuilder()\r\n    .withUrl(\"/hub\")\r\n    .withAutomaticReconnect()\r\n    .build();\r\nconnection.onreconnected(function (connectionId) {\r\n    console.log(\"Reconnected. Connection ID:\", connectionId);\r\n});\r\ntry {\r\n    connection.start();\r\n    console.log(\"Connected. Connection ID:\", connection.connectionId);\r\n}\r\ncatch (err) {\r\n    console.error(\"Connection failed:\", err);\r\n}\r\n\n\n//# sourceURL=webpack://SignalR/./src/signalR.ts?\n}");
 
 /***/ })
 
