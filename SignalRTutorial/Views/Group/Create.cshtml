@@ -31,5 +31,22 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    <script src="~/js/signalR.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+    try {
+        // ✅ Wait for connection to be ready
+        const connection = await window.signalRReady;
+
+        console.log("Chat.js using connection:", connection.connectionId);
+
+        connection.on("ReceiveMessage", (user, message) => {
+            console.log(`${user}: ${message}`);
+        });
+
+        } catch (err) {
+            console.error("SignalR not ready:", err);
+        }
+    });
+
+    </script>
 }

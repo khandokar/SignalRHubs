@@ -1,9 +1,10 @@
+const { group } = require('console');
 const path = require('path');
 
 module.exports = {
  entry: {
-    index: './src/index.ts',
-    signalR: './src/signalR.ts'
+    signalR: './src/signalR.ts',
+    groupList: './src/group-list.ts'
   },
   module: {
     rules: [
