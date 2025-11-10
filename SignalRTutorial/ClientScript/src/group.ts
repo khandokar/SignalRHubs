@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", async (event: Event) => {
                 console.log(group);
             });
 
-             connection.on("GroupUpdated", (id) => {
+             connection.on("GroupDeleted", (id) => {
                 console.log('GroupDeleted');
                 console.log(id);
             });
