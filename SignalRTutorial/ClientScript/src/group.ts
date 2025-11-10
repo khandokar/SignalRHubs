@@ -1,17 +1,27 @@
 document.addEventListener("DOMContentLoaded", async (event: Event) => {
     try {
-         const hiddenConnectionId: HTMLInputElement = document.querySelector("#connectionId");
-        // ✅ Wait for connection to be ready
-        const connection = await window.signalRReady;
-        console.log(hiddenConnectionId);
-        if (hiddenConnectionId) {
-            hiddenConnectionId.value = connection.connectionId;
+            const hiddenConnectionId: HTMLInputElement = document.querySelector("#connectionId");
+            // ✅ Wait for connection to be ready
+            const connection = await window.signalRReady;
+            if (hiddenConnectionId) {
+                hiddenConnectionId.value = connection.connectionId;
 
-        }
+            }
 
-        // connection.on("ReceiveMessage", (user, message) => {
-        //     console.log(`${user}: ${message}`);
-        // });
+            connection.on("GroupCreated", (group) => {
+                console.log('GroupCreated');
+                console.log(group);
+            });
+
+            connection.on("GroupUpdated", (group) => {
+                console.log('GroupUpdated');
+                console.log(group);
+            });
+
+             connection.on("GroupUpdated", (id) => {
+                console.log('GroupDeleted');
+                console.log(id);
+            });
 
     }catch (err) {
        console.error("SignalR not ready:", err);

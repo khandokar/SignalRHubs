@@ -66,6 +66,7 @@ namespace SignalRTutorial.Controllers
             {
                 _context.Add(@group);
                 await _context.SaveChangesAsync();
+                await _hubContext.Clients.AllExcept(new[] { @connectionId }).SendAsync("GroupCreated", group);
                 return RedirectToAction(nameof(Index));
             }
             return View(@group);
@@ -92,7 +93,7 @@ namespace SignalRTutorial.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Group @group)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Group @group, string connectionId)
         {
             if (id != @group.Id)
             {
@@ -104,7 +105,8 @@ namespace SignalRTutorial.Controllers
                 try
                 {
                     _context.Update(@group);
-                    await _context.SaveChangesAsync();
+                     await _context.SaveChangesAsync();
+                     await _hubContext.Clients.AllExcept(new[] { connectionId }).SendAsync("GroupUpdated", group);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -143,7 +145,7 @@ namespace SignalRTutorial.Controllers
         // POST: Group/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id, string connectionId)
         {
             var @group = await _context.Groups.FindAsync(id);
             if (@group != null)
@@ -152,6 +154,7 @@ namespace SignalRTutorial.Controllers
             }
 
             await _context.SaveChangesAsync();
+            await _hubContext.Clients.AllExcept(new[] { connectionId }).SendAsync("GroupDeleted", id);
             return RedirectToAction(nameof(Index));
         }
 
