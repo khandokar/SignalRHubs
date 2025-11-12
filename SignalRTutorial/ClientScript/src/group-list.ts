@@ -11,6 +11,14 @@ document.addEventListener("DOMContentLoaded", async (event: Event) => {
             connection.on("GroupCreated", (group) => {
                 console.log('GroupCreated');
                 console.log(group);
+                const table = document.getElementById("tblGroup") as HTMLTableElement;
+                const newRow = table.insertRow(); 
+                const nameCell = newRow.insertCell(0);
+                //const ageCell = newRow.insertCell(1);
+                 
+                nameCell.textContent = group.name;
+                //ageCell.textContent = "30";
+                
             });
 
             connection.on("GroupUpdated", (group) => {
