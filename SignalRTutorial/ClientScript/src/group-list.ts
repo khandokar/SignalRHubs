@@ -9,15 +9,13 @@ document.addEventListener("DOMContentLoaded", async (event: Event) => {
             }
 
             connection.on("GroupCreated", (group) => {
-                console.log('GroupCreated');
-                console.log(group);
                 const table = document.getElementById("tblGroup") as HTMLTableElement;
                 const newRow = table.insertRow(); 
-                const nameCell = newRow.insertCell(0);
-                //const ageCell = newRow.insertCell(1);
+                const idCell = newRow.insertCell(0);
+                const nameCell = newRow.insertCell(1);
                  
+                idCell.textContent = group.id;
                 nameCell.textContent = group.name;
-                //ageCell.textContent = "30";
                 
             });
 
