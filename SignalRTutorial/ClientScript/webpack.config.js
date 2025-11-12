@@ -4,7 +4,8 @@ const path = require('path');
 module.exports = {
  entry: {
     signalR: './src/signalR.ts',
-    group: './src/group.ts'
+    groupList: './src/group-list.ts',
+    groupAddEdit: './src/group-add-edit.ts'
   },
   module: {
     rules: [
