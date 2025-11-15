@@ -14,8 +14,14 @@ document.addEventListener("DOMContentLoaded", async (event: Event) => {
                 newRow.id = `row-${group.id}`;
                 const idCell = newRow.insertCell(0);
                 const nameCell = newRow.insertCell(1);
-                 
-                idCell.textContent = group.id;
+
+                const hiddenInput = document.createElement("input");
+                hiddenInput.type = "hidden";
+                hiddenInput.name = "item.id";   
+                hiddenInput.name = "item.name";     
+                hiddenInput.value = group.id.toString();
+                idCell.appendChild(hiddenInput);
+
                 nameCell.textContent = group.name;
                 
             });
