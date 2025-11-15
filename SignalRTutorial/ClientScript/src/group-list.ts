@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", async (event: Event) => {
             connection.on("GroupCreated", (group) => {
                 const table = document.getElementById("tblGroup") as HTMLTableElement;
                 const newRow = table.insertRow(); 
+                newRow.id = `row-${group.id}`;
                 const idCell = newRow.insertCell(0);
                 const nameCell = newRow.insertCell(1);
                  
@@ -22,6 +23,14 @@ document.addEventListener("DOMContentLoaded", async (event: Event) => {
             connection.on("GroupUpdated", (group) => {
                 console.log('GroupUpdated');
                 console.log(group);
+                const row = document.getElementById("row-"+group.id) as HTMLTableRowElement;
+                console.log('Row');
+                console.log(row);
+                if (row) {
+                    const cell = row.cells[1] as HTMLTableCellElement;
+                    cell.innerText = group.name;
+                }
+
             });
 
              connection.on("GroupDeleted", (id) => {
