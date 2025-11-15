@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", async (event: Event) => {
                 newRow.id = `row-${group.id}`;
                 const idCell = newRow.insertCell(0);
                 const nameCell = newRow.insertCell(1);
+                const buttonCell = newRow.insertCell(2);
 
                 const hiddenInput = document.createElement("input");
                 hiddenInput.type = "hidden";
@@ -23,15 +24,33 @@ document.addEventListener("DOMContentLoaded", async (event: Event) => {
                 idCell.appendChild(hiddenInput);
 
                 nameCell.textContent = group.name;
+
+                // Create the "Edit" link
+                const editLink = document.createElement('a');
+                editLink.href = `/Group/Edit/${group.id}`;
+                editLink.textContent = 'Edit';
+
+                // Create the "Details" link
+                const detailsLink = document.createElement('a');
+                detailsLink.href = `/Group/Details/${group.id}`;
+                detailsLink.textContent = 'Details';
+
+                // Create the "Delete" link
+                const deleteLink = document.createElement('a');
+                deleteLink.href = `/Group/Delete/${group.id}`;
+                deleteLink.textContent = 'Delete';
+
+                // Combine the links with the separator "|"
+                buttonCell.appendChild(editLink);
+                buttonCell.appendChild(document.createTextNode(' | '));  // Add separator
+                buttonCell.appendChild(detailsLink);
+                buttonCell.appendChild(document.createTextNode(' | '));  // Add separator
+                buttonCell.appendChild(deleteLink);
                 
             });
 
             connection.on("GroupUpdated", (group) => {
-                console.log('GroupUpdated');
-                console.log(group);
                 const row = document.getElementById("row-"+group.id) as HTMLTableRowElement;
-                console.log('Row');
-                console.log(row);
                 if (row) {
                     const cell = row.cells[1] as HTMLTableCellElement;
                     cell.innerText = group.name;
