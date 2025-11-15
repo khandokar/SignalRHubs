@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", async (event: Event) => {
             });
 
              connection.on("GroupDeleted", (id) => {
-                 const row = document.getElementById("row-"+id) as HTMLTableRowElement;
+                const row = document.getElementById("row-"+id) as HTMLTableRowElement;
                 if (row) {
                     row.remove();
                 }
