@@ -6,10 +6,9 @@ namespace SignalRTutorial.Hubs;
 
 public class ChatHub : Hub
 {
-        private readonly IMemoryCache _cache;
-        public ChatHub(IMemoryCache cache)
+        public ChatHub()
         {
-             _cache = cache;
+             
         }
      
         public override async Task OnConnectedAsync()
