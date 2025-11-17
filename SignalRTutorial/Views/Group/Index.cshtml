@@ -20,8 +20,8 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
-            <td id="row-@item.Id">
+        <tr id="row-@item.Id">
+            <td >
                 @Html.HiddenFor(modelItem => item.Id)
             </td>
             <td>
