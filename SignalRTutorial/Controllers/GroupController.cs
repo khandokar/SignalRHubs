@@ -26,7 +26,7 @@ namespace SignalRTutorial.Controllers
 
         // GET: Group
         public async Task<IActionResult> Index()
-        {
+        { 
             return View(await _context.Groups.ToListAsync());
         
         }
@@ -68,6 +68,7 @@ namespace SignalRTutorial.Controllers
                 await _context.SaveChangesAsync();
                 await _hubContext.Clients.AllExcept(new[] { @connectionId }).SendAsync("GroupCreated", group);
                 return RedirectToAction(nameof(Index));
+               
             }
             return View(@group);
         }

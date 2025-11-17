@@ -14,7 +14,12 @@ public class ChatHub : Hub
         public override async Task OnConnectedAsync()
         {
             string connectionId = Context.ConnectionId;
-       
+            string? userIdentifier = Context.UserIdentifier;
+            var user = Context.User;
+            var features = Context.Features;
+            var connectionAborted = Context.ConnectionAborted;
+    
+
             await base.OnConnectedAsync();
         }
 
